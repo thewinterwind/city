@@ -29,7 +29,7 @@ class DirectoryTest extends TestCase {
   $this->get('/explore?category=restaurants')->assertSeeInOrder(['Chicken House','Aboy']);
  }
  public function test_admin_rank_changes_are_scoped_and_survive_card_backfill():void {
-  $admin=$this->user('rank-admin');$admin->update(['is_admin'=>true]);
+  $admin=$this->user('rank-admin');$admin->forceFill(['is_admin'=>true])->save();
   $place=Listing::where('slug','aboys-restaurant')->first();$city=$place->city;
   $otherCategory=Listing::where('slug','park-inn-bacolod')->first();$before=$otherCategory->editorial_rank;
   $this->actingAs($admin)->post('/admin/listings/'.$place->id.'/rank',['rank'=>2])->assertRedirect();
