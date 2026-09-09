@@ -1,0 +1,341 @@
+[
+  {
+    "category": "hotels-stays",
+    "slug": "park-inn-bacolod",
+    "name": "Park Inn by Radisson Bacolod",
+    "description": "A city hotel connected to SM City Bacolod, with an outdoor pool and several dining spaces. A convenient base for combining a stay with shopping and a look around the downtown area.",
+    "address": "Block 12, Reclamation Area, Palanca Avenue, SM City Bacolod Complex",
+    "area": "Reclamation Area",
+    "website": "https://www.radissonhotels.com/en-us/hotels/park-inn-bacolod",
+    "tags": [
+      "family",
+      "weekend"
+    ],
+    "phone": "+63 34 706 8888",
+    "kind": "business",
+    "source_url": "https://www.radissonhotels.com/en-us/hotels/park-inn-bacolod",
+    "source_checked_at": "2026-09-09",
+    "featured_position": 3
+  },
+  {
+    "category": "hotels-stays",
+    "slug": "l-fisher-hotel",
+    "name": "L’Fisher Hotel",
+    "description": "A long-established Lacson Street hotel with accommodation in three towers and places to dine on the property. Stay close to the cafés and restaurants along one of Bacolod’s best-known streets.",
+    "address": "14th Street corner Lacson Street",
+    "area": "Lacson Street",
+    "website": "https://www.lfisherhotelbacolod.com/",
+    "tags": [
+      "family",
+      "weekend"
+    ],
+    "phone": "+63 34 433 3731",
+    "kind": "business",
+    "source_url": "https://www.lfisherhotelbacolod.com/",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "hotels-stays",
+    "slug": "seda-capitol-central",
+    "name": "Seda Capitol Central",
+    "description": "A contemporary city hotel beside the Capitol Park area. Make it a base for discovering central Bacolod, with dining and a rooftop bar available at the hotel.",
+    "address": "Lacson Street corner North Capitol Road",
+    "area": "Capitol Area",
+    "website": "https://ayalalandhospitality.com/en/seda/hotels/seda-capitol-central-bacolod",
+    "tags": [
+      "weekend",
+      "date-night"
+    ],
+    "phone": null,
+    "kind": "business",
+    "source_url": "https://ayalalandhospitality.com/en/seda/hotels/seda-capitol-central-bacolod",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "resorts-pools",
+    "slug": "caribbean-waterpark",
+    "name": "Caribbean Waterpark & Resotel",
+    "description": "A waterpark and resort in Goldenfield with swimming pools and water slides. A starting point for a family swim day or a short stay in the southern part of the city. Ask the operator about current day-use arrangements.",
+    "address": "Goldenfield Commercial Complex, Singcang-Airport",
+    "area": "Singcang",
+    "website": "https://www.facebook.com/CaribbeanWaterparkGoldenfield/",
+    "tags": [
+      "family",
+      "friends",
+      "weekend"
+    ],
+    "phone": null,
+    "kind": "business",
+    "source_url": "https://www.traveloka.com/en-en/hotel/philippines/caribbean-waterpark-and-resotel-3000010020403",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "resorts-pools",
+    "slug": "palmas-del-mar",
+    "name": "Palmas del Mar Resort",
+    "description": "A Bacolod resort offering poolside relaxation and overnight accommodation along J.R. Torres Avenue. Contact the resort to check pool access, day-use packages and arrangements for your group.",
+    "address": "J.R. Torres Avenue, Singcang-Airport",
+    "area": "Singcang",
+    "website": "https://www.facebook.com/palmasdelmarresortbacolod/",
+    "tags": [
+      "family",
+      "friends",
+      "weekend"
+    ],
+    "phone": null,
+    "kind": "business",
+    "source_url": "https://www.facebook.com/palmasdelmarresortbacolod/",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "restaurants",
+    "slug": "aboys-restaurant",
+    "name": "Aboy’s Restaurant",
+    "description": "A Bacolod restaurant serving Filipino dishes and seafood in the Goldenfield area. Put it on the list for a shared meal and a taste of local cooking; ask the restaurant about the day’s selection.",
+    "address": "Liroville Subdivision, Singcang, Goldenfield area",
+    "area": "Singcang",
+    "website": "https://www.facebook.com/p/Aboys-100063795436380/",
+    "tags": [
+      "family",
+      "friends",
+      "weekend"
+    ],
+    "phone": null,
+    "kind": "business",
+    "source_url": "https://www.tripadvisor.com/Restaurant_Review-g298464-d1916646-Reviews-Aboy_s_Restaurant-Bacolod_Negros_Occidental_Negros_Island_Visayas.html",
+    "source_checked_at": "2026-09-09",
+    "featured_position": 1
+  },
+  {
+    "category": "restaurants",
+    "slug": "chicken-house-lacson",
+    "name": "Chicken House · Lacson",
+    "description": "A local stop for chicken inasal on 24th and Lacson. A straightforward place to start exploring Bacolod’s grilled-chicken tradition, whether you are catching up with friends or heading out for a family meal.",
+    "address": "24th Street corner Lacson Street",
+    "area": "Lacson Street",
+    "website": "https://www.facebook.com/chickenhouse.bcd/",
+    "tags": [
+      "family",
+      "friends",
+      "weekend"
+    ],
+    "phone": null,
+    "kind": "business",
+    "source_url": "https://www.facebook.com/chickenhouse.bcd/",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "restaurants",
+    "slug": "ripples",
+    "name": "Ripples at L’Fisher",
+    "description": "An all-day dining restaurant at L’Fisher Hotel serving local and international dishes. The menu includes Negrense favourites, and the hotel also advertises weekend buffets. Check the restaurant directly for the current menu and buffet schedule.",
+    "address": "Ground Floor, L’Fisher Hotel, 14th Street corner Lacson Street",
+    "area": "Lacson Street",
+    "website": "https://www.lfisherhotelbacolod.com/restaurants/",
+    "tags": [
+      "family",
+      "date-night",
+      "rainy-day"
+    ],
+    "phone": "+63 34 433 3731",
+    "kind": "business",
+    "source_url": "https://www.lfisherhotelbacolod.com/restaurants/",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "restaurants",
+    "slug": "arima",
+    "name": "Arima at Park Inn",
+    "description": "Park Inn’s all-day restaurant offers buffet breakfasts and à la carte lunches and dinners. A convenient dining option around SM City Bacolod; confirm the current dining arrangements directly with the hotel.",
+    "address": "Park Inn by Radisson, SM City Bacolod Complex",
+    "area": "Reclamation Area",
+    "website": "https://www.radissonhotels.com/en-us/hotels/park-inn-bacolod",
+    "tags": [
+      "family",
+      "rainy-day",
+      "friends"
+    ],
+    "phone": "+63 34 706 8888",
+    "kind": "business",
+    "source_url": "https://www.radissonhotels.com/en-us/hotels/park-inn-bacolod",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "cafes-desserts",
+    "slug": "calea",
+    "name": "Calea Pastries & Coffee",
+    "description": "A Bacolod cake and coffee stop on the Lacson Street strip. Browse the cake counter and settle in for dessert, or add a sweet stop to an afternoon exploring the neighbourhood.",
+    "address": "Balay Quince, 15th Street corner Lacson Street",
+    "area": "Lacson Street",
+    "website": "https://www.facebook.com/pages/Calea-Pastries-Cake-Bacolod-City/126985990721233",
+    "tags": [
+      "date-night",
+      "friends",
+      "rainy-day"
+    ],
+    "phone": null,
+    "kind": "business",
+    "source_url": "https://orvs18.wordpress.com/contact-us/",
+    "source_checked_at": "2026-09-09",
+    "featured_position": 4
+  },
+  {
+    "category": "cafes-desserts",
+    "slug": "felicias-lacson",
+    "name": "Felicia’s · Lacson",
+    "description": "A pastry shop on 15th Street for cakes and sweet treats. This listing is for the Lacson branch; Felicia’s also lists other outlets, so check the branch when arranging a visit or collection.",
+    "address": "15th Street, beside L’Fisher Hotel",
+    "area": "Lacson Street",
+    "website": "https://feliciaspastry.com/shops/",
+    "tags": [
+      "date-night",
+      "friends",
+      "rainy-day"
+    ],
+    "phone": "+63 34 431 1807",
+    "kind": "business",
+    "source_url": "https://feliciaspastry.com/shops/",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "cafes-desserts",
+    "slug": "cs-cafe",
+    "name": "C’s Café by L’Fisher",
+    "description": "A café offering French-inspired pastries, cakes, croinuts and coffee on 14th and Lacson. Stop for a pastry break or use it as a meeting point before exploring the surrounding streets.",
+    "address": "14th Street corner Lacson Street",
+    "area": "Lacson Street",
+    "website": "https://www.lfisherhotelbacolod.com/restaurants/",
+    "tags": [
+      "friends",
+      "date-night",
+      "rainy-day"
+    ],
+    "phone": "+63 34 433 3731",
+    "kind": "business",
+    "source_url": "https://www.lfisherhotelbacolod.com/restaurants/",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "bars-nightlife",
+    "slug": "straight-up",
+    "name": "Straight Up Roof Deck Bar",
+    "description": "A rooftop bar at Seda Capitol Central offering drinks, food and views across Bacolod. An option for an evening catch-up or a date; check with the venue about access, weather and current arrangements.",
+    "address": "Seda Capitol Central, Lacson Street corner North Capitol Road",
+    "area": "Capitol Area",
+    "website": "https://ayalalandhospitality.com/en/seda/hotels/seda-capitol-central-bacolod/dining/straight-up-roof-deck-bar",
+    "tags": [
+      "date-night",
+      "friends",
+      "weekend"
+    ],
+    "phone": null,
+    "kind": "business",
+    "source_url": "https://ayalalandhospitality.com/en/seda/hotels/seda-capitol-central-bacolod/dining/straight-up-roof-deck-bar",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "bars-nightlife",
+    "slug": "marapara-pool-bar",
+    "name": "Marapara Pool Bar",
+    "description": "A relaxed pool-facing bar at Park Inn by Radisson Bacolod. Consider a drink around sunset, and ask the hotel about entry for non-staying guests before planning your visit.",
+    "address": "Park Inn by Radisson, SM City Bacolod Complex",
+    "area": "Reclamation Area",
+    "website": "https://www.radissonhotels.com/en-us/hotels/park-inn-bacolod",
+    "tags": [
+      "date-night",
+      "friends",
+      "weekend"
+    ],
+    "phone": "+63 34 706 8888",
+    "kind": "business",
+    "source_url": "https://www.radissonhotels.com/en-us/hotels/park-inn-bacolod",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "activities-tours",
+    "slug": "negros-forest-park",
+    "name": "Negros Forest Park",
+    "description": "Meet some of Negros’ endangered native wildlife at a conservation and education centre managed by the Talarak Foundation. A visit offers a closer look at the animals and the work being done to protect them.",
+    "address": "South Capitol Road, Capitol complex",
+    "area": "Capitol Area",
+    "website": "https://www.talarak.org/negros-forest-park",
+    "tags": [
+      "family",
+      "weekend"
+    ],
+    "phone": null,
+    "kind": "business",
+    "source_url": "https://www.talarak.org/negros-forest-park",
+    "source_checked_at": "2026-09-09",
+    "featured_position": 2
+  },
+  {
+    "category": "activities-tours",
+    "slug": "negros-museum",
+    "name": "The Negros Museum",
+    "description": "Discover stories of Negrense life, history and culture through a museum managed by the Negros Cultural Foundation. Its home in the old Agricultural Building makes it a natural stop on a day around the Capitol area.",
+    "address": "Old Agricultural Building, Gatuslao Street",
+    "area": "Capitol Area",
+    "website": "https://www.ncfiph.org/",
+    "tags": [
+      "family",
+      "rainy-day",
+      "weekend"
+    ],
+    "phone": "+63 34 703 4339",
+    "kind": "business",
+    "source_url": "https://www.ncfiph.org/",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "places-to-explore",
+    "slug": "capitol-park-lagoon",
+    "name": "Capitol Park & Lagoon",
+    "description": "A green space in the Capitol complex with a central lagoon and paths for a stroll. Pair a look around the park with a nearby museum or café visit, and follow any local access notices.",
+    "address": "Negros Occidental Provincial Capitol complex, Lacson Street",
+    "area": "Capitol Area",
+    "website": "https://www.negros-occ.gov.ph/",
+    "tags": [
+      "family",
+      "weekend"
+    ],
+    "phone": null,
+    "kind": "public_place",
+    "source_url": "https://en.wikipedia.org/wiki/Bacolod",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "places-to-explore",
+    "slug": "san-sebastian-cathedral",
+    "name": "San Sebastian Cathedral",
+    "description": "A prominent religious and historic landmark near Bacolod Public Plaza, known for its coral-stone structure. A place for a respectful visit; check worship services and visitor access before entering.",
+    "address": "Rizal Street, opposite Bacolod Public Plaza",
+    "area": "Downtown",
+    "website": null,
+    "tags": [
+      "family",
+      "weekend"
+    ],
+    "phone": null,
+    "kind": "public_place",
+    "source_url": "https://www.radissonhotels.com/en-us/hotels/park-inn-bacolod",
+    "source_checked_at": "2026-09-09"
+  },
+  {
+    "category": "places-to-explore",
+    "slug": "bacolod-public-plaza",
+    "name": "Bacolod Public Plaza",
+    "description": "The historic downtown plaza opposite San Sebastian Cathedral, with trees and a central bandstand. City reports describe redevelopment work in 2026, so check local notices and accessible areas before making it part of your outing.",
+    "address": "Rizal Street, opposite San Sebastian Cathedral",
+    "area": "Downtown",
+    "website": "https://bacolodcity.gov.ph/",
+    "tags": [
+      "family",
+      "weekend"
+    ],
+    "phone": null,
+    "kind": "public_place",
+    "source_url": "https://bacolodcity.gov.ph/tieza-targets-completion-of-bacolod-government-center-heritage-plaza-redevelopment-by-september-or-october/",
+    "source_checked_at": "2026-09-09"
+  }
+]
