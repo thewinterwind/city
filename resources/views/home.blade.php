@@ -1,9 +1,25 @@
 @extends('layout')
-@section('title','Eat. Explore. Enjoy '.$city->name)
+@section('title','Places to eat, stay & explore in '.$city->name)
+@section('body-class','directory-home')
 @section('content')
-<section class="hero"><div class="container hero-inner"><div class="hero-copy"><span class="eyebrow"><span class="sun-dot"></span> {{ strtoupper($city->tagline) }}</span><h1>Your next<br><em>good time</em><br>starts here.</h1><p>{{ $city->intro }}</p><form class="hero-search" action="/explore" role="search"><label class="sr-only" for="hero-q">Search places</label><span aria-hidden="true">⌕</span><input id="hero-q" name="q" placeholder="Coffee, dinner, a little adventure…" maxlength="120"><button class="button" type="submit">Let’s explore <span aria-hidden="true">↗</span></button></form><div class="popular"><span>A little inspiration:</span><a href="/explore?category=restaurants">Something delicious</a><a href="/explore?occasion=family">Family time</a></div></div><div class="hero-art"><img src="/assets/city-illustration.svg" alt="A colourful illustration celebrating city discoveries: cafés, landmarks and tropical gardens" width="620" height="600"><div class="art-sticker">A city full of<br><strong>little joys.</strong><span>Find yours ↗</span></div></div></div></section>
-<section class="container section"><div class="section-heading"><div><span class="eyebrow">WHAT ARE YOU IN THE MOOD FOR?</span><h2>Pick your kind of fun.</h2></div><p>From your first coffee to your last stop.</p></div><div class="category-grid">@foreach($categories as $category)<a class="category-tile" href="/explore?category={{ $category->slug }}"><img src="/assets/{{ $category->slug }}.svg" alt="" width="100" height="90"><h3>{{ $category->name }}</h3><span>{{ $counts[$category->id]??0 }} places <b>↗</b></span></a>@endforeach</div></section>
-<section class="container section"><div class="section-heading"><div><span class="eyebrow">A FEW PLACES TO GET YOU STARTED</span><h2>Your next “let’s go there.”</h2></div><a class="text-link" href="/explore">Explore all places <span>↗</span></a></div><div class="cards">@foreach($picks as $listing)@include('partials.card')@endforeach</div><p class="small muted">A starting selection across the city. Listings are free and these picks are not paid placements.</p></section>
-<section class="container section"><div class="outing-banner"><div><span class="eyebrow">LESS SCROLLING. MORE GOING.</span><h2>Good company.<br>Great little plans.</h2><p>A family afternoon, a date or a catch-up with friends?<br>Start with the occasion. We’ll help you find the places.</p><a class="button yellow" href="/plan">Plan a day out <span>↗</span></a></div><div class="outing-links"><a href="/explore?occasion=family"><span>01</span> A day with the family <b>↗</b></a><a href="/explore?occasion=date-night"><span>02</span> Just the two of you <b>↗</b></a><a href="/explore?occasion=friends"><span>03</span> Catch up with your people <b>↗</b></a><a href="/explore?occasion=rainy-day"><span>04</span> A rainy-day escape <b>↗</b></a></div></div></section>
-<section class="container section"><div class="business-banner"><span class="eyebrow">HELLO, LOCAL BUSINESS OWNERS</span><h2>You bring the good times.<br>We’ll help people find you.</h2><p>Run a restaurant, café, hotel or something fun in {{ $city->name }}?<br>Add your business to the guide. It’s free.</p><a class="button" href="/submit">List your business <span>↗</span></a></div></section>
+<div class="container home-listings">
+ <h1 class="sr-only">Places to eat, stay and explore in {{ $city->name }}</h1>
+ @foreach($rows as $row)
+ @php($category=$row['category'])
+ <section class="category-row theme-{{ $category->slug }}" id="{{ $category->slug }}" aria-labelledby="heading-{{ $category->slug }}" data-carousel>
+  <div class="row-heading">
+   <div class="row-title"><span class="category-icon" aria-hidden="true">@include('partials.category-icon',['slug'=>$category->slug])</span><h2 id="heading-{{ $category->slug }}">{{ $category->name }}</h2><span class="row-count">{{ $row['count'] }} places</span></div>
+   <div class="row-controls"><button type="button" class="carousel-arrow" data-direction="-1" aria-label="Previous {{ strtolower($category->name) }}" aria-controls="track-{{ $category->slug }}" disabled><span aria-hidden="true">←</span></button><button type="button" class="carousel-arrow" data-direction="1" aria-label="More {{ strtolower($category->name) }}" aria-controls="track-{{ $category->slug }}" disabled><span aria-hidden="true">→</span></button></div>
+  </div>
+  <div class="card-track" id="track-{{ $category->slug }}" tabindex="0" role="region" aria-label="{{ $category->name }} places, scroll to browse">
+   @forelse($row['listings'] as $listing)
+    @include('partials.card',['homeCard'=>true,'eagerPhoto'=>$loop->parent->first && $loop->index<4])
+   @empty
+    <p class="row-empty">Places are being added to this category.</p>
+   @endforelse
+  </div>
+  <a class="see-category" href="/explore?category={{ $category->slug }}">See all {{ strtolower($category->name) }} <span aria-hidden="true">↗</span></a>
+ </section>
+ @endforeach
+</div>
 @endsection

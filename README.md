@@ -4,9 +4,9 @@ A Laravel 13.31.0 city discovery directory. The first deployment serves https://
 
 ## Included in this free launch
 
-- Database-driven home page, seven shared categories, search, area and occasion filters, pagination and listing details.
-- 19 researched places in Bacolod: 3 hotels, 2 resorts, 4 restaurants, 3 cafés, 2 bars, 2 operated activities and 3 public places. No category starts with more than ten records.
-- Directions, source links, public contacts where verified, and clearly labelled original category illustrations. No invented reviews, prices, hours or photos of businesses.
+- Database-driven category navigation and horizontal homepage rows, four photo cards visible on desktop, mobile swipe, browse-all pages and listing details.
+- 35 researched places across Bacolod and clearly labelled nearby Talisay: five in each of seven shared categories. No category starts with more than ten records.
+- Real venue photographs, area labels, concise descriptions, directions and source links. Image provenance is recorded in `database/data/photo-sources.json`; public credits appear on listing details. No invented reviews, prices or hours.
 - Local-browser saved places, with shareable shortlist URLs that reveal only listing IDs.
 - Business registration, sign-in, password changes, free listing submissions, photo uploads, ownership claims and corrections.
 - Administrator review queue, listing edits and archival. Claims require an explicit independent-verification checkbox. Public places cannot be claimed. New listings and edits remain pending until reviewed. Existing photos are retained when an edit has no new photo.
@@ -20,7 +20,7 @@ SQLite is the initial authoritative database, stored on the server's persistent 
 
 Tables: `cities`, `categories`, `users`, `listings`, `submissions`, `audit_events`, `migrations`.
 
-Seeding uses `firstOrCreate`, so it does not overwrite owner/admin edits on subsequent deployments. Initial sources and research dates live in `database/data/bacolod.json`. The initial facts do not imply current hours, availability or an endorsement. The public plaza entry explicitly mentions reported redevelopment.
+Seeding uses `firstOrCreate`, so it does not overwrite owner/admin edits on subsequent deployments. Initial sources and research dates live in `database/data/bacolod.json`. `CuratedCardsSeeder` is a one-time photo/rank backfill for existing launch listings; it skips already initialized photos and preserves live owner uploads and existing ranks. Do not rerun it as a routine deployment step. The initial facts do not imply current hours, availability or an endorsement. The public plaza entry explicitly mentions reported redevelopment.
 
 ## Local setup
 
@@ -40,7 +40,7 @@ For container-based development, build `deploy/Dockerfile` and mount the checkou
 composer test
 ```
 
-The automated suite uses an isolated in-memory database, never the production database. Nine tests cover 65 assertions: real seed limits/idempotency, public routes and filters, city isolation, unknown hosts, auth, claims, edit field preservation, harmful URLs, cross-city submission IDs, non-admin registration, and unpublished shortlist protection.
+The automated suite uses an isolated in-memory database, never the production database. The isolated tests cover: real seed limits/idempotency, public routes and filters, city isolation, unknown hosts, auth, claims, edit field preservation, harmful URLs, cross-city submission IDs, non-admin registration, and unpublished shortlist protection.
 
 ## Administration
 
@@ -57,7 +57,7 @@ Password reset email, deletion automation and email notifications are not config
 ## Add a city later
 
 1. Add a `cities` row with its exact root domain, slug, name, tagline, intro and active flag.
-2. Add researched `listings` rows with that `city_id` and the existing category IDs. Home suggestions use the optional `featured_position` field.
+2. Add researched `listings` rows with that `city_id` and the existing category IDs. Category rows use optional `editorial_rank` (1 first, null last) with stable name/ID tie-breaking. Admins can reorder each category in `/admin`; ranks are city scoped and audited. Owner edits cannot set ranks. `featured_position` is a legacy field.
 3. Route the new domain through the same application origin. Keep Host forwarding, all required HTTP methods, cookies and query strings enabled, with dynamic caching disabled.
 4. Set up that domain's TLS and canonical www redirect, verify city isolation, and launch.
 
@@ -80,3 +80,9 @@ A local backup script uses SQLite's online backup API and preserves uploaded pho
 ## Source repository
 
 The shared source repository is https://github.com/thewinterwind/city. Commit application changes and the dependency lock file here. The live website database remains authoritative for listings, accounts and submissions. Do not commit production `.env`, credentials, database files, private submissions, uploaded business photos or logs.
+
+## Homepage photo-row update
+
+Deploy source and public photo assets, run `php artisan migrate --force`, then `php artisan db:seed --force` to add only missing initial venues. For the original launch database only, run `php artisan db:seed --class=CuratedCardsSeeder --force` once to initialize existing listings' card metadata. Refresh compiled views afterwards. The migration adds fields without replacing listing IDs, users, submissions, uploads or the database.
+
+Homepage ordering is an editorial choice maintained per city/category; it is not represented as a public review score. Public places remain unclaimable. The top four appear at desktop widths; arrows or horizontal swiping reveal further places. The home carousel is capped at ten per category, while See all uses the complete published category with pagination.

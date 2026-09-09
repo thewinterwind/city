@@ -5,12 +5,14 @@ use Illuminate\Http\Request;
 class DirectoryController {
  public function home(City $city) {
   $categories=Category::orderBy('position')->get();
-  $counts=Listing::forCity($city)->published()->selectRaw('category_id, count(*) as total')->groupBy('category_id')->pluck('total','category_id');
-  $picks=Listing::forCity($city)->published()->with(['category','city'])->whereNotNull('featured_position')->orderBy('featured_position')->limit(4)->get();
-  return view('home',compact('categories','counts','picks'));
+  $rows=$categories->map(function($category)use($city){
+   $query=Listing::forCity($city)->published()->where('category_id',$category->id);
+   return ['category'=>$category,'count'=>(clone $query)->count(),'listings'=>$query->with(['category','city'])->ranked()->limit(10)->get()];
+  });
+  return view('home',compact('categories','rows'));
  }
  public function explore(Request $request,City $city) {
-  $filters=$request->validate(['q'=>'nullable|string|max:120','category'=>'nullable|string|max:80','occasion'=>'nullable|in:family,date-night,friends,rainy-day,weekend','area'=>'nullable|string|max:80','sort'=>'nullable|in:name,newest','saved'=>'nullable|string|max:1000']);
+  $filters=$request->validate(['q'=>'nullable|string|max:120','category'=>'nullable|string|max:80','occasion'=>'nullable|in:family,date-night,friends,rainy-day,weekend','area'=>'nullable|string|max:80','sort'=>'nullable|in:rank,name,newest','saved'=>'nullable|string|max:1000']);
   $categories=Category::orderBy('position')->get();
   $query=Listing::forCity($city)->published()->with(['category','city']);
   if($request->filled('category')){$cat=$categories->firstWhere('slug',$filters['category']);abort_unless($cat,404);$query->where('category_id',$cat->id);}
@@ -18,7 +20,8 @@ class DirectoryController {
   if($request->filled('occasion')){$query->whereJsonContains('tags',$filters['occasion']);}
   if($request->filled('area')){$query->where('area',$filters['area']);}
   if($request->has('saved')){$ids=array_slice(array_filter(explode(',',$filters['saved'] ?? ''),fn($id)=>ctype_digit($id)),0,50);$query->whereIn('id',$ids);}
-  $listings=($request->input('sort')==='newest' ? $query->orderByDesc('published_at')->orderBy('name') : $query->orderBy('name'))->paginate(12)->withQueryString();
+  $listings=match($request->input('sort','rank')){'newest'=>$query->orderByDesc('published_at')->orderBy('name'),'name'=>$query->orderBy('name'),default=>$query->ranked()};
+  $listings=$listings->paginate(12)->withQueryString();
   $areas=Listing::forCity($city)->published()->distinct()->orderBy('area')->pluck('area');
   return view('explore',compact('categories','listings','areas','filters'));
  }

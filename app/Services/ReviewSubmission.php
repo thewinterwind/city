@@ -14,7 +14,7 @@ class ReviewSubmission {
     elseif(in_array($s->type,['new','edit'])){
      $fields=collect($s->payload)->only(['name','category_id','description','address','area','website','phone','tags','photo_path','photo_credit'])->all();
      if($s->type==='new'){$slug=Str::slug($fields['name']) ?: 'place';$base=$slug;$n=2;while(Listing::where('city_id',$s->city_id)->where('slug',$slug)->exists()){$slug=$base.'-'.$n++;}$listing=Listing::create($fields+['city_id'=>$s->city_id,'owner_id'=>$s->user_id,'slug'=>$slug,'kind'=>'business','status'=>'published','published_at'=>now()]);$s->listing_id=$listing->id;}
-     else{abort_unless($listing && ($listing->owner_id===$s->user_id || $s->user?->is_admin),409);$listing->update($fields);}
+     else{abort_unless($listing && ($listing->owner_id===$s->user_id || $s->user?->is_admin),409);if(isset($fields['description']))$fields['summary']=null;if(isset($fields['category_id']) && (int)$fields['category_id']!==$listing->category_id)$fields['editorial_rank']=null;$listing->update($fields);}
     }
     // Corrections are acknowledged only after the reviewer has made the corresponding listing edit.
    }
