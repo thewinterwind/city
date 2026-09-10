@@ -86,3 +86,11 @@ The shared source repository is https://github.com/thewinterwind/city. Commit ap
 Deploy source and public photo assets, run `php artisan migrate --force`, then `php artisan db:seed --force` to add only missing initial venues. For the original launch database only, run `php artisan db:seed --class=CuratedCardsSeeder --force` once to initialize existing listings' card metadata. Refresh compiled views afterwards. The migration adds fields without replacing listing IDs, users, submissions, uploads or the database.
 
 Homepage ordering is an editorial choice maintained per city/category; it is not represented as a public review score. Public places remain unclaimable. The top four appear at desktop widths; arrows or horizontal swiping reveal further places. The home carousel is capped at ten per category, while See all uses the complete published category with pagination.
+
+## Website analytics
+
+Public browsing pages load Google Analytics using the canonical domain of the resolved active City record and the mapping in `config/analytics.php`. Bacolod uses GA4 property `553506114`, web stream `15754943597`, and measurement ID `G-X8T3C6HN27`, verified through Google Analytics Admin API on September 10, 2026. The tracking include is shared across cities; unmapped city domains do not inherit Bacolod's tag.
+
+Sign-in, registration, saved-place, submission, dashboard and administration routes do not load analytics. Google signals and advertising personalisation are disabled. No account identifiers or form contents are sent as custom analytics parameters.
+
+The private portfolio dashboard at https://www.anthonyvipond.com/admin/websites imports reports through its separate service account at midnight America/Vancouver. Credentials remain on that server, outside both repositories. After changing the tag configuration, refresh the application's config cache if used and rebuild views as the PHP-FPM user (`docker exec -u www-data city-php php artisan view:cache`). No database migration or seed is needed for this integration.
