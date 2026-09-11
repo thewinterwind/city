@@ -47,11 +47,12 @@ class ExpansionTest extends TestCase
         $this->get('/places/l-fisher-hotel')->assertOk()->assertSee('Rooms and accommodation')->assertSee('data-place-gallery', false)->assertSee('data-photo-next', false)->assertSee('Photo credits');
         $this->get('/places/citadines-bacolod-city')->assertOk()->assertSee('Check-in');
         $this->get('/explore?category=hotels-stays&page=2')->assertOk()->assertSee('Page 2 of 2')->assertSee('Circle Inn');
+        $this->get('/places/bernardino-jalandoni-museum')->assertOk()->assertSee('https://creativecommons.org/licenses/by-sa/4.0/', false);
         $this->get('/sitemap.xml')->assertOk()->assertSee('/places/citadines-bacolod-city');
         $other = City::create(['name'=>'Other', 'slug'=>'gallery-other', 'domain'=>'other.test', 'tagline'=>'Other', 'intro'=>'Other', 'active'=>true]);
         $this->get('http://other.test/places/citadines-bacolod-city')->assertNotFound();
         $place = Listing::where('slug', 'citadines-bacolod-city')->firstOrFail();
         $place->update(['gallery'=>[['path'=>'../../untrusted.svg','caption'=>'Unsafe']], 'details'=>['sections'=>[['title'=>'<script>alert(1)</script>', 'body'=>'Escaped content']]]]);
-        $this->get('/places/citadines-bacolod-city')->assertOk()->assertDontSee('../../untrusted.svg', false)->assertDontSee('<script>alert(1)</script>', false)->assertSee('&lt;script&gt;alert(1)&lt;/script&gt;', false);
+        $this->get('http://bacolod.com/places/citadines-bacolod-city')->assertOk()->assertDontSee('../../untrusted.svg', false)->assertDontSee('<script>alert(1)</script>', false)->assertSee('&lt;script&gt;alert(1)&lt;/script&gt;', false);
     }
 }
