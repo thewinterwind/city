@@ -20,6 +20,8 @@ class Listing extends Model {
   foreach($this->gallery ?? [] as $photo){
    if(!empty($photo['path']) && preg_match('~^[a-z0-9/_-]+\\.(jpg|jpeg|png|webp)$~i',$photo['path'])){$photo['url']='/assets/places/'.$photo['path'];$index=array_search($photo['url'],array_column($photos,'url'),true);if($index===false)$photos[]=$photo;else $photos[$index]=array_merge($photos[$index],$photo);}
   }
+  foreach($photos as &$photo){if(!empty($photo['credit']))$photo['credit']=implode(' / ',array_unique(explode(' / ',$photo['credit'])));}
+  unset($photo);
   return $photos;
  }
  public function getDirectionsAttribute(): string {return 'https://www.google.com/maps/search/?api=1&query='.rawurlencode($this->name.' '.$this->address.' Philippines');}

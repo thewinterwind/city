@@ -106,3 +106,5 @@ After taking a consistent database backup, apply the nullable JSON columns with 
 Hotel and resort pages use a desktop photo mosaic, a mobile swipe strip and a keyboard/touch-accessible full-size dialog with thumbnails, captions and credits. Existing primary and uploaded photographs retain priority. Opening hours and other time-sensitive information are dated and accompanied by direct venue links. Rates, star ratings and availability are not inferred.
 
 The expansion tests cover repeat import safety, existing editorial changes, referenced image files, category coverage, pagination, city isolation and escaped detail/gallery rendering. Run the suite only against the isolated in-memory SQLite test database; never against the live database.
+
+Run deployed Artisan cache commands as the PHP-FPM runtime user: `docker exec --user 82:82 -w /app city-php php artisan view:cache` (and likewise for `view:clear`). Root-owned compiled views can fail when Laravel refreshes their timestamps. Preserve runtime ownership of `storage` and `bootstrap/cache`; tests remain in the separate review container.
