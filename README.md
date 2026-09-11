@@ -94,3 +94,15 @@ Public browsing pages load Google Analytics using the canonical domain of the re
 Sign-in, registration, saved-place, submission, dashboard and administration routes do not load analytics. Google signals and advertising personalisation are disabled. No account identifiers or form contents are sent as custom analytics parameters.
 
 The private portfolio dashboard at https://www.anthonyvipond.com/admin/websites imports reports through its separate service account at midnight America/Vancouver. Credentials remain on that server, outside both repositories. After changing the tag configuration, refresh the application's config cache if used and rebuild views as the PHP-FPM user (`docker exec -u www-data city-php php artisan view:cache`). No database migration or seed is needed for this integration.
+
+## September 2026 directory expansion
+
+The initial seed remains a small, repeatable bootstrap. The separately reviewed expansion adds 71 places (106 total for Bacolod) and richer information for the original 35 listings. Category totals are 21 hotels, 11 resorts/pools, 25 restaurants, 19 cafés/desserts, 9 bars/nightlife venues, 11 activities and 10 places to explore. Nearby destinations are labelled by their actual town.
+
+After taking a consistent database backup, apply the nullable JSON columns with `php artisan migrate --force`, then run `php artisan db:seed --class=BacolodExpansionSeeder --force`. The batch adds missing Bacolod slugs and fills empty details/gallery fields on published originals. It never replaces an existing listing's name, description, owner, status, rank or primary photo, and reruns preserve subsequent edits. New entries follow the existing ranked places. This is an explicit editorial batch, not part of the default seed or public-submission workflow.
+
+`database/data/bacolod-expansion.json` contains the new places; `bacolod-details.json` contains the original-place enrichment. Both retain information sources. `bacolod-photo-sources.json` records the original URLs for locally optimised venue images; credits are visible in the gallery and on the page. Images are sourced venue photographs, not generated depictions. Source credit is not an open reuse licence; no such licence is asserted unless specifically recorded.
+
+Hotel and resort pages use a desktop photo mosaic, a mobile swipe strip and a keyboard/touch-accessible full-size dialog with thumbnails, captions and credits. Existing primary and uploaded photographs retain priority. Opening hours and other time-sensitive information are dated and accompanied by direct venue links. Rates, star ratings and availability are not inferred.
+
+The expansion tests cover repeat import safety, existing editorial changes, referenced image files, category coverage, pagination, city isolation and escaped detail/gallery rendering. Run the suite only against the isolated in-memory SQLite test database; never against the live database.
